@@ -11,22 +11,16 @@ app.use(express.json());
 
 app.get('/api/repositorios', async (req, res) => {
     const { q } = req.query;
-    if (!q) {
-        return res.status(400).json({ erro: 'O parâmetro de consulta "q" é obrigatório' });
-    }
-
+   
     try {
-        const resposta = await axios.get(`https://api.github.com/search/repositories`, {
-            params: { q },
-            headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` }
-        });
+        const resposta = await axios.get(`https://api.github.com/search/repositories`, );
         res.json(resposta.data);
     } catch (erro) {
-        console.error('Erro ao buscar dados do GitHub:', erro);
-        res.status(500).json({ erro: 'Erro ao buscar dados do GitHub' });
+        console.error(erro);
+
     }
 });
 
 app.listen(PORT, () => {
-    console.log(`Servidor está rodando na porta ${PORT}`);
+    console.log(`${PORT}`);
 });
