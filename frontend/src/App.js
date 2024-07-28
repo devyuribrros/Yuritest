@@ -7,7 +7,7 @@ import './styles.css';
 const App = () => {
     const [repositorios, setRepositorios] = useState([]);
 
-    const enviado = async (consulta) => {
+    const pesquisado = async (consulta) => {
         try {
             const resposta = await axios.get(`http://localhost:5000/api/repositorios?q=${consulta}`);
             setRepositorios(resposta.data.items);
@@ -19,7 +19,7 @@ const App = () => {
     return (
         <div className="app">
             <h1>Busca de Repositórios no GitHub</h1>
-            <BarraDePesquisa aoPesquisar={enviado} />
+            <BarraDePesquisa aoPesquisar={pesquisado} />
             <ListaDeRepositorios repositorios={repositorios} />
         </div>
     );
