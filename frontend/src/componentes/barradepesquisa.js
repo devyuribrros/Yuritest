@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 const BarraDePesquisa = ({ aoPesquisar }) => {
     const [input, setInput] = useState('');
 
-    const handleSubmit = (event) => {
+    const enviar = (event) => {
         event.preventDefault();
         aoPesquisar(input);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={enviar}>
             <input
                 type="text"
                 value={input}
